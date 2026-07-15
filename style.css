@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #050008, #17002f, #080010);
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* Анимированные звёзды */
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+
+    background-size: 80px 80px, 130px 130px;
+    animation: moveStars 20s linear infinite;
+    opacity: .35;
+    z-index: -1;
+}
+
+
+@keyframes moveStars {
+
+    from {
+        background-position: 0 0, 0 0;
+    }
+
+    to {
+        background-position: 1000px 1000px, -1000px 500px;
+    }
+
+}
+
+
+
+/* Шапка */
+
+header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 8%;
+
+}
+
+
+.logo {
+
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+}
+
+
+.logo span {
+
+    color: #a855f7;
+
+}
+
+
+nav button {
+
+    background: transparent;
+    border: 1px solid #a855f7;
+    color: white;
+
+    padding: 8px 15px;
+    margin-left: 8px;
+
+    border-radius: 20px;
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+nav button:hover {
+
+    background: #a855f7;
+
+}
+
+
+
+/* Главный блок */
+
+.hero {
+
+    text-align: center;
+    padding: 90px 20px;
+
+}
+
+
+.hero h1 {
+
+    font-size: 55px;
+    max-width: 900px;
+    margin: auto;
+
+    background: linear-gradient(90deg,#fff,#c084fc);
+    -webkit-background-clip:text;
+    color: transparent;
+
+}
+
+
+.hero p {
+
+    margin-top: 25px;
+    font-size: 20px;
+    color: #ccc;
+
+}
+
+
+
+.buttons {
+
+    margin-top: 40px;
+
+}
+
+
+
+.main-btn,
+.second-btn {
+
+    display: inline-block;
+
+    padding: 15px 35px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    margin: 10px;
+
+    transition: .3s;
+
+}
+
+
+
+.main-btn {
+
+    background: linear-gradient(90deg,#9333ea,#c026d3);
+    color:white;
+
+    box-shadow:0 0 30px #9333ea;
+
+}
+
+
+.second-btn {
+
+    border:1px solid #a855f7;
+    color:white;
+
+}
+
+
+
+.main-btn:hover,
+.second-btn:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+
+/* Карточки */
+
+
+.cards {
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+
+    padding:40px 8%;
+
+    flex-wrap:wrap;
+
+}
+
+
+.card {
+
+    width:280px;
+
+    padding:30px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(168,85,247,.3);
+
+    border-radius:25px;
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
+
+}
+
+
+.card:hover {
+
+    transform:translateY(-10px);
+
+    box-shadow:0 0 30px rgba(168,85,247,.5);
+
+}
+
+
+.card:first-letter {
+
+    font-size:40px;
+
+}
+
+
+.card h2 {
+
+    margin:20px 0;
+
+}
+
+
+.card p {
+
+    color:#bbb;
+
+}
+
+
+
+/* Телефон */
+
+@media(max-width:700px){
+
+    .hero h1{
+        font-size:38px;
+    }
+
+
+    header{
+        padding:20px;
+    }
+
+}
