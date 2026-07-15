@@ -5,88 +5,84 @@ const ctx = canvas.getContext("2d");
 
 let stars=[];
 
-let width;
-let height;
-
 
 function resize(){
 
-width = canvas.width = window.innerWidth;
+canvas.width=window.innerWidth;
 
-height = canvas.height = window.innerHeight;
+canvas.height=window.innerHeight;
 
 }
 
-
-window.addEventListener("resize",resize);
 
 resize();
 
-
-
-let amount = window.innerWidth < 600 ? 70 : 150;
-
-
-
-class Star{
-
-
-constructor(){
-
-this.x=Math.random()*width;
-
-this.y=Math.random()*height;
-
-this.size=Math.random()*2+0.5;
-
-this.speed=Math.random()*0.4+0.1;
-
-this.alpha=Math.random();
-
-}
+window.addEventListener("resize",resize);
 
 
 
-update(){
-
-this.y-=this.speed;
+const count = window.innerWidth < 600 ? 60 : 150;
 
 
-if(this.y<0){
 
-this.y=height;
+for(let i=0;i<count;i++){
 
-this.x=Math.random()*width;
+stars.push({
 
-}
+x:Math.random()*canvas.width,
 
-this.alpha += (Math.random()-0.5)*0.03;
+y:Math.random()*canvas.height,
 
+r:Math.random()*2+0.5,
 
-if(this.alpha<0.2)
-this.alpha=0.2;
+speed:Math.random()*0.4+0.1,
 
+alpha:Math.random()
 
-if(this.alpha>1)
-this.alpha=1;
-
+});
 
 }
 
 
 
-draw(){
+function animate(){
+
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+
+
+stars.forEach(s=>{
+
+
+s.y-=s.speed;
+
+
+if(s.y<0){
+
+s.y=canvas.height;
+
+s.x=Math.random()*canvas.width;
+
+}
+
 
 
 ctx.beginPath();
 
 ctx.arc(
-this.x,
-this.y,
-this.size,
+s.x,
+s.y,
+s.r,
 0,
 Math.PI*2
 );
+
 
 
 ctx.shadowBlur=15;
@@ -95,44 +91,19 @@ ctx.shadowColor="#a855ff";
 
 
 ctx.fillStyle=
-`rgba(255,255,255,${this.alpha})`;
+`rgba(255,255,255,${s.alpha})`;
 
 
 ctx.fill();
 
 
-ctx.shadowBlur=0;
-
-
-}
-
-}
-
-
-
-for(let i=0;i<amount;i++){
-
-stars.push(new Star());
-
-}
-
-
-
-function animate(){
-
-ctx.clearRect(0,0,width,height);
-
-
-stars.forEach(star=>{
-
-star.update();
-
-star.draw();
 
 });
 
 
+
 requestAnimationFrame(animate);
+
 
 }
 
