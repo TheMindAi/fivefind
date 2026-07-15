@@ -4,54 +4,42 @@ const ctx = canvas.getContext("2d");
 
 let stars = [];
 
-let width;
-let height;
-
+let w;
+let h;
 
 
 function resize(){
 
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
 
 }
 
 
-window.addEventListener("resize", resize);
-
 resize();
 
+window.addEventListener("resize", resize);
 
 
-const amount = window.innerWidth < 700 ? 80 : 180;
+
+const count = window.innerWidth < 700 ? 80 : 180;
 
 
 
 class Star {
 
-
     constructor(){
 
-        this.reset();
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
 
-    }
-
-
-
-    reset(){
-
-        this.x = Math.random() * width;
-
-        this.y = Math.random() * height;
-
-        this.size = Math.random() * 2 + 0.3;
+        this.size = Math.random() * 2 + 0.4;
 
         this.speed = Math.random() * 0.35 + 0.05;
 
         this.opacity = Math.random();
 
-        this.fade = Math.random() * 0.02 + 0.005;
-
+        this.change = Math.random() * 0.02 + 0.005;
 
     }
 
@@ -59,37 +47,32 @@ class Star {
 
     update(){
 
-
         this.y -= this.speed;
 
 
-        this.opacity += this.fade;
-
+        this.opacity += this.change;
 
 
         if(this.opacity >= 1 || this.opacity <= 0.2){
 
-            this.fade *= -1;
+            this.change *= -1;
 
         }
-
 
 
         if(this.y < -10){
 
-            this.y = height + 10;
+            this.y = h + 10;
 
-            this.x = Math.random() * width;
+            this.x = Math.random() * w;
 
         }
-
 
     }
 
 
 
     draw(){
-
 
         ctx.beginPath();
 
@@ -109,21 +92,16 @@ class Star {
         );
 
 
-
-        ctx.shadowBlur = 15;
+        ctx.shadowBlur = 20;
 
         ctx.shadowColor = "#a855ff";
 
 
-
         ctx.fillStyle =
-
         `rgba(255,255,255,${this.opacity})`;
 
 
-
         ctx.fill();
-
 
 
         ctx.shadowBlur = 0;
@@ -136,7 +114,7 @@ class Star {
 
 
 
-for(let i = 0; i < amount; i++){
+for(let i = 0; i < count; i++){
 
     stars.push(new Star());
 
@@ -153,9 +131,9 @@ function animate(){
 
         0,
 
-        width,
+        w,
 
-        height
+        h
 
     );
 
