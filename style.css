@@ -427,3 +427,113 @@ nav button:hover {
     transform:scale(1.05);
 
 }
+.about {
+
+    text-align:center;
+
+    padding:70px 10%;
+
+}
+
+
+.about h2 {
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.about p {
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#aaa;
+
+    font-size:18px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+footer {
+
+    margin-top:50px;
+
+    padding:40px 10%;
+
+    text-align:center;
+
+    background:rgba(0,0,0,.3);
+
+    border-top:1px solid rgba(168,85,247,.2);
+
+}
+
+
+
+.footer-logo {
+
+    font-size:30px;
+
+    font-weight:800;
+
+}
+
+
+
+.footer-logo span {
+
+    color:#a855f7;
+
+}
+
+
+
+footer p {
+
+    color:#777;
+
+    margin:15px;
+
+}
+
+
+
+.footer-links {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.footer-links a {
+
+    color:#c084fc;
+
+    text-decoration:none;
+
+}
+
+
+
+.footer-links a:hover {
+
+    text-decoration:underline;
+
+}
